@@ -1,0 +1,23 @@
+#for f in dot.*; do
+#  new_file="${f/dot/}"
+#  mv -f "${f}" "$new_file"
+#done
+
+for f in .*; do
+	# Ignorar os diretórios especiais . e ..
+	[[ "$f" == "." || "$f" == ".." ]] && continue
+
+	# Criar o novo nome de arquivo
+	new_file="dot.${f#\.}"
+
+	# Renomear o arquivo
+	mv -f "${f}" "$new_file"
+done
+
+#for f in dot*; do
+#	# Criar o novo nome de arquivo, adicionando o ponto após "dot"
+#	new_file="${f/dot/dot.}"
+#
+#	# Renomear o arquivo
+#	mv -f "${f}" "$new_file"
+#done
